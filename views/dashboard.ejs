@@ -1,0 +1,106 @@
+<% include ./partials/header.ejs %>
+
+<div style="display:inline-flex; flex-direction: row; justify-content: space-around; width: 100%">
+    <div>
+        <h1 style="padding-left: 50px">Employees</h1>
+        <form method="POST" action="/searchemployees/name" class="navbar-form" role="search">
+                <div class="input-group add-on">
+                  <input style="height: 40px" class="form-control" placeholder="Search" name="srchterm" id="srch-term" type="text">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+                </div>
+              </form>
+<div class="container" style="width: 110%">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="table-responsive">
+        <table id="mytable" class="table table-bordred table-striped">
+                    <thead>
+                    <th>Eid</th>
+                    <th>FullName</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Delete</th>
+                   </thead>
+        <tbody>
+        <% employees.forEach(function(res){%>
+        <tr>
+            <td><%=res.eid%></td>
+            <td><%=res.name%></td>
+            <td><%=res.DOB%></td>
+            <td><%=res.gender%></td>
+            <td><%=res.deptname%></td>
+            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                <form action="/deleteemploye/<%=res.eid%>" method="GET">
+                    <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"  ><span class="glyphicon glyphicon-trash"></span></button>
+                </form>
+            </p></td>
+        </tr>
+        <%})%>
+        </tbody>
+            
+    </table>
+    
+    <div class="clearfix"></div>       
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div>
+        <h1 style="padding-left: 50px">Patients</h1>
+        <form method="POST" action="/searchpatients/name" class="navbar-form" role="search">
+            <div class="input-group add-on">
+              <input style="height: 40" class="form-control" placeholder="Search" name="srchterm" id="srch-term" type="text">
+              <div class="input-group-btn">
+                <button class="btn btn-default btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+            </div>
+          </form>
+<div class="container" style=" width: 110%">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="table-responsive">
+        <table id="mytable" class="table table-bordred table-striped">
+                    <thead>
+                    <th>Pid</th>
+                    <th>FullName</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Disease</th>
+                    <th>Delete</th>
+                   </thead>
+        <tbody>
+        <% patient.forEach(function(res){%>
+            <tr>
+                <td><%=res.pid%></td>
+                <td><%=res.pname%></td>
+                <td><%=res.DOB%></td>
+                <td><%=res.gender%></td>
+                <td><%=res.disease%></td>
+                <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                    <form action="/deletepatient/<%=res.pid%>" method="GET">
+                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
+                    </form>
+                </p></td>
+            </tr> 
+        <%})%>
+        </tbody>
+            
+    </table>
+    
+    <div class="clearfix"></div>       
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+ 
+    </div>
+</div>
+
